@@ -1,0 +1,22 @@
+🔐 Steps to Generate an App Password:
+Enable 2-Step Verification on your Google account:
+
+Go to myaccount.google.com/security
+
+Enable 2-Step Verification
+
+Generate App Password:
+
+Go to myaccount.google.com/apppasswords
+
+Select Mail and your device (e.g., “Other” → type NodeMailer)
+
+Click Generate
+
+Copy the 16-character password
+mongodb+srv://varaprasadvellanki0402:IxXncJxmeRHjlvI8@mailer.lnjt4ub.mongodb.net/
+varaprasadvellanki0402
+IxXncJxmeRHjlvI8
+
+
+[ 'Name', 'Email', 'Phone' ]
