@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast'; // ✅ Import toast
+import toast from 'react-hot-toast'; 
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -10,16 +10,16 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
         email,
         name,
         password,
       });
       toast.success(
         'Registration request sent to admin. You will get OTP when approved.'
-      ); // ✅ Toast on success
+      ); 
     } catch (error) {
-      toast.error('Registration failed. Please try again.'); // ✅ Toast on error
+      toast.error('Registration failed. Please try again.'); 
     }
   };
 

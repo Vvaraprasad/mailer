@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import toast from 'react-hot-toast'; // ✅ Import toast
+import toast from 'react-hot-toast'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ const Login = () => {
   const handleSendOtp = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`,
         {
           email,
           password,
@@ -24,26 +24,26 @@ const Login = () => {
       setUserId(res.data.userId);
       setShowOtp(true);
       setResendMsg('OTP sent to your email.');
-      toast.success('OTP sent to your email.'); // ✅ Toast on success
+      toast.success('OTP sent to your email.'); 
     } catch (err) {
-      toast.error('Invalid credentials or error sending OTP.'); // ✅ Toast on error
+      toast.error('Invalid credentials or error sending OTP.'); 
     }
   };
 
   const handleVerify = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/verify-otp`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-otp`,
         {
           userId,
           otp,
         }
       );
       localStorage.setItem('token', res.data.token);
-      toast.success('Login successful'); // ✅ Toast on success
+      toast.success('Login successful'); 
       navigate('/dashboard');
     } catch (err) {
-      toast.error('OTP verification failed.'); // ✅ Toast on error
+      toast.error('OTP verification failed.'); 
     }
   };
 

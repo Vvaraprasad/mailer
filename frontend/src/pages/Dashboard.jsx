@@ -29,7 +29,7 @@ const Dashboard = () => {
 
     axios
       .get(
-        `${import.meta.env.VITE_API_BASE_URL}/email/templates/user/${user.id}`
+        `${import.meta.env.VITE_API_BASE_URL}/api/email/templates/user/${user.id}`
       )
       .then((res) => setTemplates(res.data || []))
       .catch((err) => {
@@ -38,7 +38,7 @@ const Dashboard = () => {
       });
 
     axios
-      .get(`${import.meta.env.VITE_API_BASE_URL}/email/settings/${user.id}`)
+      .get(`${import.meta.env.VITE_API_BASE_URL}/api/email/settings/${user.id}`)
       .then((res) => {
         const settings = res.data || {};
         setStoredSettings(settings);
@@ -61,7 +61,7 @@ const Dashboard = () => {
       return;
     }
     axios
-      .post(`${import.meta.env.VITE_API_BASE_URL}/email/templates`, {
+      .post(`${import.meta.env.VITE_API_BASE_URL}/api/email/templates`, {
         ...formData,
         userId,
       })
@@ -77,7 +77,7 @@ const Dashboard = () => {
 
   const handleDeleteTemplate = (id) => {
     axios
-      .delete(`${import.meta.env.VITE_API_BASE_URL}/email/templates/${id}`)
+      .delete(`${import.meta.env.VITE_API_BASE_URL}/api/email/templates/${id}`)
       .then(() => {
         setTemplates((prev) => prev.filter((t) => t._id !== id));
         toast.success('Template deleted');
@@ -109,7 +109,7 @@ const Dashboard = () => {
 
     axios
       .put(
-        `${import.meta.env.VITE_API_BASE_URL}/email/settings/${userId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/email/settings/${userId}`,
         payload
       )
       .then(() => toast.success('Settings updated'))
@@ -133,7 +133,7 @@ const Dashboard = () => {
     data.append('platform', platform);
 
     axios
-      .post(`${import.meta.env.VITE_API_BASE_URL}/email/send-bulk`, data)
+      .post(`${import.meta.env.VITE_API_BASE_URL}/api/email/send-bulk`, data)
       .then((res) => toast.success(res.data.message))
       .catch((err) => {
         console.error(err);
@@ -148,7 +148,7 @@ const Dashboard = () => {
       return toast.error('Please fill recipient Name and Email');
     }
     axios
-      .post(`${import.meta.env.VITE_API_BASE_URL}/email/send-single`, {
+      .post(`${import.meta.env.VITE_API_BASE_URL}/api/email/send-single`, {
         userId,
         templateId: selectedTemplate,
         recipient: recipientData,
